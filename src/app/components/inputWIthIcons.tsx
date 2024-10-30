@@ -1,15 +1,9 @@
 import * as React from "react";
 import { cn } from "@/lib/utils";
 
-type IconProps = {
-  className?: string;
-};
-
 type InputWithIconProps = React.ComponentPropsWithoutRef<"input"> & {
-  startIcon?: React.ComponentType<IconProps>;
+  startIcon?: React.ReactNode;
   endIcon?: React.ReactNode;
-  onStartIconClick?: React.MouseEventHandler<HTMLButtonElement>;
-  onEndIconClick?: React.MouseEventHandler<HTMLButtonElement>;
 };
 
 const InputWithIcon = React.forwardRef<
@@ -17,27 +11,15 @@ const InputWithIcon = React.forwardRef<
   InputWithIconProps
 >(
   (
-    {
-      className,
-      type,
-      startIcon: StartIcon,
-      endIcon: EndIcon,
-      onStartIconClick,
-      onEndIconClick,
-      ...props
-    },
+    { className, type, startIcon: StartIcon, endIcon: EndIcon, ...props },
     ref
   ) => {
     return (
       <div className="w-full relative flex items-center">
         {StartIcon && (
-          <button
-            className=" absolute left-3 text-center transition-all disabled:pointer-events-none opacity-50"
-            type="button"
-            onClick={onStartIconClick}
-          >
-            <StartIcon className={"w-5 h-5 text-foreground-faded"} />
-          </button>
+          <div className="absolute left-3 text-center transition-all disabled:pointer-events-none opacity-50">
+            {StartIcon}
+          </div>
         )}
         <input
           type={type}
@@ -51,13 +33,9 @@ const InputWithIcon = React.forwardRef<
           {...props}
         />
         {EndIcon && (
-          <button
-            className="absolute right-3 text-center transition-all disabled:pointer-events-none disabled:opacity-50"
-            type="button"
-            onClick={onEndIconClick}
-          >
+          <div className="absolute right-3 text-center transition-all disabled:pointer-events-none disabled:opacity-50">
             {EndIcon}
-          </button>
+          </div>
         )}
       </div>
     );
@@ -65,4 +43,5 @@ const InputWithIcon = React.forwardRef<
 );
 
 InputWithIcon.displayName = "InputWithIcon";
+
 export { InputWithIcon };
