@@ -9,19 +9,20 @@ import { InputWithIcon } from "./inputWIthIcons";
 import { Cross2Icon } from "@radix-ui/react-icons";
 import { PopoverClose } from "@radix-ui/react-popover";
 
+import WikiBox from "./wikiBox";
+
 type InputWithDropdownProps = {
-  dropdownData: string[];
+  dropdownData: Wikis[];
 };
 
 const NavSearchField: React.FC<InputWithDropdownProps> = ({ dropdownData }) => {
   const [searchTerm, setSearchTerm] = React.useState<string>("");
-  const [filteredData, setFilteredData] =
-    React.useState<string[]>(dropdownData);
+  const [filteredData, setFilteredData] = React.useState<Wikis[]>(dropdownData);
 
   React.useEffect(() => {
     setFilteredData(
       dropdownData.filter((item) =>
-        item.toLowerCase().includes(searchTerm.toLowerCase())
+        item.title.toLowerCase().includes(searchTerm.toLowerCase())
       )
     );
   }, [searchTerm, dropdownData]);
@@ -48,7 +49,7 @@ const NavSearchField: React.FC<InputWithDropdownProps> = ({ dropdownData }) => {
       </PopoverTrigger>
       <PopoverContent
         onOpenAutoFocus={(e) => e.preventDefault()}
-        className="w-[450px] mt-2 rounded-xl px-0"
+        className="font-[family-name:var(--font-Montserrat)] w-[450px] mt-2 rounded-xl px-0"
       >
         <div className="border-b">
           <div className="flex justify-between pb-3 px-5">
@@ -60,15 +61,24 @@ const NavSearchField: React.FC<InputWithDropdownProps> = ({ dropdownData }) => {
             </PopoverClose>
           </div>
         </div>
-        {filteredData.map((item, index) => (
-          <li
-            key={index}
-            className="p-2 cursor-pointer hover:bg-gray-100"
-            onMouseDown={() => setSearchTerm(item)}
-          >
-            {item}
-          </li>
-        ))}
+        {filteredData.length > 0 ? (
+          filteredData.map((item) => (
+            <WikiBox
+              key={item.title}
+              img={item.img}
+              title={item.title}
+              desc={item.desc}
+              setSearchTerm={setSearchTerm}
+            />
+          ))
+        ) : (
+          <div className="flex justify-center items-center py-8">
+            <p className="text-sm font-semibold">
+              The wiki you just searched is not available. You can send us
+              suggestions for wikis
+            </p>
+          </div>
+        )}
       </PopoverContent>
     </Popover>
   );
