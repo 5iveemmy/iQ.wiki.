@@ -17,4 +17,10 @@ declare global {
     href: string;
     title: string;
   }
+
+  interface Wikis {
+    title: string;
+    desc: string;
+    img: string;
+  }
 }

@@ -1,6 +1,6 @@
 "use client";
 
-import Navbar from "./components/navbar";
+import Navbar from "./reusbales/navbar";
 
 export default function Home() {
   return (
