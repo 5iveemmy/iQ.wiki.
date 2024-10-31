@@ -1,6 +1,8 @@
 "use client";
 
-import Navbar from "./reusbales/navbar";
+import dynamic from "next/dynamic";
+
+const Navbar = dynamic(() => import("./reusbales/navbar"), { ssr: false });
 
 export default function Home() {
   return (
