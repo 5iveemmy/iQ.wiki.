@@ -24,7 +24,7 @@ const InputWithIcon = React.forwardRef<
         <input
           type={type}
           className={cn(
-            "w-full py-2 rounded-xl bg-background placeholder:text-sm placeholder:text-gray-600 border border-border-faded transition duration-300 ease focus:outline-none focus:border-border-primary",
+            "w-full dark:bg-gray800 dark:border-alpha-400 dark:placeholder:text-slate-400 py-2 rounded-xl bg-background placeholder:text-sm placeholder:text-gray-600 border border-border-faded transition duration-300 ease focus:outline-none focus:border-border-primary",
             StartIcon && "pl-10",
             EndIcon && "pr-9",
             className

@@ -35,7 +35,7 @@ const NavSearchField: React.FC<InputWithDropdownProps> = ({ dropdownData }) => {
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
           endIcon={
-            <PopoverTrigger className="rounded bg-gray-200 text-gray-900 font-lg px-2 h-6 hover:bg-gray-200">
+            <PopoverTrigger className="rounded dark:bg-gray-600 dark:text-white bg-gray-200 text-gray-900 font-lg px-2 h-6 hover:bg-gray-200">
               /
             </PopoverTrigger>
           }
@@ -49,7 +49,7 @@ const NavSearchField: React.FC<InputWithDropdownProps> = ({ dropdownData }) => {
       </PopoverTrigger>
       <PopoverContent
         onOpenAutoFocus={(e) => e.preventDefault()}
-        className="font-[family-name:var(--font-Montserrat)] w-[450px] mt-2 rounded-xl px-0"
+        className="font-[family-name:var(--font-Montserrat)] xl:w-[500px] w-full mt-2 rounded-xl px-0"
       >
         <div className="border-b">
           <div className="flex justify-between pb-3 px-5">
@@ -74,8 +74,7 @@ const NavSearchField: React.FC<InputWithDropdownProps> = ({ dropdownData }) => {
         ) : (
           <div className="flex justify-center items-center py-8">
             <p className="text-sm font-semibold">
-              The wiki you just searched is not available. You can send us
-              suggestions for wikis
+              The wiki you just searched is not available.
             </p>
           </div>
         )}

@@ -39,6 +39,10 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import NavSearchField from "./navSearchField";
+import { Switch } from "@/components/ui/switch";
+import { Label } from "@/components/ui/label";
+import { FaMoon, FaSun } from "react-icons/fa";
+import { useTheme } from "next-themes";
 
 const links: MenuLinks[] = [
   { href: "/", title: "Rank" },
@@ -113,11 +117,14 @@ const wikis: Wikis[] = [
 const Navbar = () => {
   const [language, setLanguage] = React.useState<string>("English");
   const [abbr, setAbbr] = React.useState<string>("EN");
+  const { theme, setTheme } = useTheme();
+
+  const isDark = theme === "dark";
 
   return (
-    <div className="shadow-sm fixed top-0 left-0 right-0 z-50 w-full bg-white dark:bg-gray800 border-b dark:border-alpha-100 border-gray-200 lg:py-2">
-      <div className="px-8 h-16 flex gap-8 items-center">
-        <Link href="/" className="flex gap-2 items-center">
+    <div className="shadow-sm fixed top-0 left-0 right-0 z-50 w-full bg-white dark:bg-gray-800 border-b dark:border-alpha-100 dark:border-0 border-gray-200 lg:py-2">
+      <div className="px-8 h-16 flex gap-8 lg:gap-40 xl:gap-8 items-center justify-between">
+        <Link href="/" className="flex gap-2 items-center w-full max-w-fit">
           <Image
             priority
             width="44"
@@ -130,11 +137,11 @@ const Navbar = () => {
           </h1>
         </Link>
 
-        <div className="flex items-center">
+        <div className="hidden xl:flex flex-row gap-2">
           <NavigationMenu>
-            <NavigationMenuList>
+            <NavigationMenuList className="gap-2">
               <NavigationMenuItem>
-                <NavigationMenuTrigger className=" font-semibold text-gray-600">
+                <NavigationMenuTrigger className=" font-semibold text-gray-600 dark:text-white">
                   Categories
                 </NavigationMenuTrigger>
 
@@ -157,73 +164,87 @@ const Navbar = () => {
                 <NavigationMenuItem key={link.title}>
                   <Link href={link.href} legacyBehavior passHref>
                     <NavigationMenuLink
-                      className={`${navigationMenuTriggerStyle()} font-semibold text-gray-600`}
+                      className={`${navigationMenuTriggerStyle()} font-semibold text-gray-600 dark:text-white`}
                     >
                       {link.title}
                     </NavigationMenuLink>
                   </Link>
                 </NavigationMenuItem>
               ))}
+              <NavigationMenu>
+                <NavigationMenuItem className="list-none">
+                  <NavigationMenuTrigger className="font-semibold text-gray-600 dark:text-white">
+                    Menu
+                  </NavigationMenuTrigger>
+                  <NavigationMenuContent className="py-2">
+                    <ul className="w-[262px]">
+                      {menuItems.map((item) => (
+                        <ListItem
+                          href={item.href}
+                          title={item.title}
+                          key={item.title}
+                        >
+                          {item.icon}
+                        </ListItem>
+                      ))}
+                    </ul>
+                  </NavigationMenuContent>
+                </NavigationMenuItem>
+              </NavigationMenu>
             </NavigationMenuList>
           </NavigationMenu>
-
-          <NavigationMenu>
-            <NavigationMenuItem className="list-none">
-              <NavigationMenuTrigger className="font-semibold text-gray-600 ">
-                Menu
-              </NavigationMenuTrigger>
-              <NavigationMenuContent className="py-2">
-                <ul className="w-[262px]">
-                  {menuItems.map((item) => (
-                    <ListItem
-                      href={item.href}
-                      title={item.title}
-                      key={item.title}
-                    >
-                      {item.icon}
-                    </ListItem>
-                  ))}
-                </ul>
-              </NavigationMenuContent>
-            </NavigationMenuItem>
-          </NavigationMenu>
         </div>
 
-        <div className="relative w-[450px]">
-          <NavSearchField dropdownData={wikis} />
-        </div>
+        <NavSearchField dropdownData={wikis} />
 
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button
-              variant="ghost"
-              className="hover:bg-transparent font-semibold"
-            >
-              {abbr} <IoIosArrowDown />
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent className="w-56 py-2 px-0">
-            {languages.map((item) => (
-              <DropdownMenuCheckboxItem
-                key={item.language}
-                checked={language === item.language}
-                onCheckedChange={() => {
-                  setLanguage(item.language);
-                  setAbbr(item.abbr);
-                }}
-                className="gap-2 items-center cursor-pointer text-base "
+        <div className="flex gap-4 items-center">
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button
+                variant="ghost"
+                className="hover:bg-transparent font-semibold"
               >
-                <Image
-                  src={item.flag}
-                  width="24"
-                  height="18"
-                  alt={`${item.language} flag`}
-                />
-                <p>{item.language}</p>
-              </DropdownMenuCheckboxItem>
-            ))}
-          </DropdownMenuContent>
-        </DropdownMenu>
+                {abbr} <IoIosArrowDown />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent className="w-56 py-2 px-0">
+              {languages.map((item) => (
+                <DropdownMenuCheckboxItem
+                  key={item.language}
+                  checked={language === item.language}
+                  onCheckedChange={() => {
+                    setLanguage(item.language);
+                    setAbbr(item.abbr);
+                  }}
+                  className="gap-2 items-center cursor-pointer text-base "
+                >
+                  <Image
+                    src={item.flag}
+                    width="24"
+                    height="18"
+                    alt={`${item.language} flag`}
+                  />
+                  <p>{item.language}</p>
+                </DropdownMenuCheckboxItem>
+              ))}
+            </DropdownMenuContent>
+          </DropdownMenu>
+          <div className="gap-8 flex items-center">
+            <div className="flex items-center space-x-2">
+              {isDark ? <FaSun className="text-white" /> : <FaMoon />}
+              <Label
+                htmlFor="airplane-mode"
+                className="text-nowrap dark:text-white"
+              >
+                {theme} Mode
+              </Label>
+            </div>
+            <Switch
+              checked={isDark}
+              onClick={() => setTheme(isDark ? "light" : "dark")}
+            />
+          </div>
+        </div>
       </div>
     </div>
   );

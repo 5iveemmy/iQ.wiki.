@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import { ThemeProvider } from "@/components/themeProvider";
 
 const montserrat = localFont({
   src: "./fonts/Montserrat-VariableFont_wght.ttf",
@@ -19,12 +20,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-     
+    <html lang="en" suppressHydrationWarning>
       <body
-        className={`${montserrat.variable} ${montserrat.variable} antialiased bg-white dark:bg-black`}
+        className={`${montserrat.variable} ${montserrat.variable} antialiased bg-white dark:bg-gray-800`}
       >
-        {children}
+        <ThemeProvider attribute="class" enableSystem disableTransitionOnChange>
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );
