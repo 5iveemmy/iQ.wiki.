@@ -11,12 +11,12 @@ const config: Config = {
     extend: {
       colors: {
         "alpha-400": "#ffffff3d",
-        gray800: "#1a202c",
-        blue: {
-          light: "#85d7ff",
-          DEFAULT: "#1fb6ff",
-          dark: "#009eeb",
-        },
+        "text-color": "rgba(var(--text-color))",
+        "text-gray-900": "rgb(var(--text-color)/ 90%)",
+        "text-gray-800": "rgb(var(--text-color)/ 80%)",
+        "text-gray-700": "rgb(var(--text-color)/ 70%)",
+        "bg-color": "rgba(var(--bg-color))",
+
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         card: {

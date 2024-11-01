@@ -49,17 +49,15 @@ const NavSearchField: React.FC<InputWithDropdownProps> = ({ dropdownData }) => {
       </PopoverTrigger>
       <PopoverContent
         onOpenAutoFocus={(e) => e.preventDefault()}
-        className="font-[family-name:var(--font-Montserrat)] xl:w-[500px] w-full mt-2 rounded-xl px-0"
+        className="rounded-b-xl pb-0 bg-bg-color font-[family-name:var(--font-Montserrat)] xl:w-[500px] w-full mt-2 rounded-xl px-0"
       >
-        <div className="border-b">
-          <div className="flex justify-between pb-3 px-5">
-            <h4 className="font-[family-name:var(--font-Montserrat)] text-sm text-gray-600 font-semibold ">
-              Popular Wikis
-            </h4>
-            <PopoverClose>
-              <Cross2Icon />
-            </PopoverClose>
-          </div>
+        <div className="flex justify-between pb-3 px-5">
+          <h4 className="font-[family-name:var(--font-Montserrat)] text-sm text-gray-600 font-semibold ">
+            Popular Wikis
+          </h4>
+          <PopoverClose>
+            <Cross2Icon />
+          </PopoverClose>
         </div>
         {filteredData.length > 0 ? (
           filteredData.map((item) => (
@@ -68,7 +66,6 @@ const NavSearchField: React.FC<InputWithDropdownProps> = ({ dropdownData }) => {
               img={item.img}
               title={item.title}
               desc={item.desc}
-              setSearchTerm={setSearchTerm}
             />
           ))
         ) : (

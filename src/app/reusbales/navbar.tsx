@@ -122,7 +122,7 @@ const Navbar = () => {
   const isDark = theme === "dark";
 
   return (
-    <div className="shadow-sm fixed top-0 left-0 right-0 z-50 w-full bg-white dark:bg-gray-800 border-b dark:border-alpha-100 dark:border-0 border-gray-200 lg:py-2">
+    <div className="shadow-sm fixed dark:border-[#ffffff0f] top-0 left-0 right-0 z-50 w-full bg-bg-color  border-b  lg:py-2">
       <div className="px-8 h-16 flex gap-8 lg:gap-40 xl:gap-8 items-center justify-between">
         <Link href="/" className="flex gap-2 items-center w-full max-w-fit">
           <Image
@@ -132,16 +132,14 @@ const Navbar = () => {
             src="/braindao-logo.svg"
             alt="iq.wiki logo"
           />
-          <h1 className="text-xl font-semibold text-gray-900 dark:text-white">
-            IQ.wiki
-          </h1>
+          <h1 className="text-xl font-semibold text-text-gray-900">IQ.wiki</h1>
         </Link>
 
         <div className="hidden xl:flex flex-row gap-2">
           <NavigationMenu>
             <NavigationMenuList className="gap-2">
               <NavigationMenuItem>
-                <NavigationMenuTrigger className=" font-semibold text-gray-600 dark:text-white">
+                <NavigationMenuTrigger className="dark:hover:text-text-gray-700 font-semibold text-text-gray-900">
                   Categories
                 </NavigationMenuTrigger>
 
@@ -152,6 +150,7 @@ const Navbar = () => {
                         href="/"
                         title={category.title}
                         key={category.title}
+                        className="hover:dark:text-white"
                       >
                         {category.icon}
                       </ListItem>
@@ -164,7 +163,7 @@ const Navbar = () => {
                 <NavigationMenuItem key={link.title}>
                   <Link href={link.href} legacyBehavior passHref>
                     <NavigationMenuLink
-                      className={`${navigationMenuTriggerStyle()} font-semibold text-gray-600 dark:text-white`}
+                      className={`${navigationMenuTriggerStyle()} font-semibold text-text-gray-900 dark:hover:text-text-gray-700`}
                     >
                       {link.title}
                     </NavigationMenuLink>
@@ -173,7 +172,7 @@ const Navbar = () => {
               ))}
               <NavigationMenu>
                 <NavigationMenuItem className="list-none">
-                  <NavigationMenuTrigger className="font-semibold text-gray-600 dark:text-white">
+                  <NavigationMenuTrigger className="font-semibold text-text-gray-900 dark:hover:text-text-gray-700">
                     Menu
                   </NavigationMenuTrigger>
                   <NavigationMenuContent className="py-2">
@@ -183,6 +182,7 @@ const Navbar = () => {
                           href={item.href}
                           title={item.title}
                           key={item.title}
+                          className="hover:dark:text-white"
                         >
                           {item.icon}
                         </ListItem>
@@ -202,7 +202,7 @@ const Navbar = () => {
             <DropdownMenuTrigger asChild>
               <Button
                 variant="ghost"
-                className="hover:bg-transparent font-semibold"
+                className=" text-text-gray-900 hover:bg-transparent dark:hover:text-text-gray-800 font-semibold "
               >
                 {abbr} <IoIosArrowDown />
               </Button>
@@ -216,7 +216,7 @@ const Navbar = () => {
                     setLanguage(item.language);
                     setAbbr(item.abbr);
                   }}
-                  className="gap-2 items-center cursor-pointer text-base "
+                  className="gap-2 items-center cursor-pointer text-base  dark:hover:bg-[#ffffff14]"
                 >
                   <Image
                     src={item.flag}
@@ -224,19 +224,19 @@ const Navbar = () => {
                     height="18"
                     alt={`${item.language} flag`}
                   />
-                  <p>{item.language}</p>
+                  <p className="text-text-gray-900">{item.language}</p>
                 </DropdownMenuCheckboxItem>
               ))}
             </DropdownMenuContent>
           </DropdownMenu>
           <div className="gap-8 flex items-center">
             <div className="flex items-center space-x-2">
-              {isDark ? <FaSun className="text-white" /> : <FaMoon />}
+              {isDark ? <FaSun /> : <FaMoon />}
               <Label
                 htmlFor="airplane-mode"
-                className="text-nowrap dark:text-white"
+                className="text-nowrap text-text-gray-900"
               >
-                {theme} Mode
+                {theme === "light" ? "Light" : "Dark"} Mode
               </Label>
             </div>
             <Switch
@@ -262,14 +262,14 @@ const ListItem = React.forwardRef<
         <a
           ref={ref}
           className={cn(
-            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-[#edf2f7] hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+            "block select-none dark:hover:bg-[#ffffff14] space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-[#edf2f7] hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
             className
           )}
           {...props}
         >
           <div className="flex gap-3 items-center">
             <>{children}</>
-            <p className="text-md font-semibold text-gray-600 ">{title}</p>
+            <p className="text-md font-semibold text-text-gray-900 ">{title}</p>
           </div>
         </a>
       </NavigationMenuLink>

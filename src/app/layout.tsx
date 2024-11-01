@@ -22,7 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${montserrat.variable} ${montserrat.variable} antialiased bg-white dark:bg-gray-800`}
+        className={`${montserrat.variable} ${montserrat.variable} antialiased bg-bg-color`}
       >
         <ThemeProvider attribute="class" enableSystem disableTransitionOnChange>
           {children}
