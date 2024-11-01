@@ -123,7 +123,7 @@ const Navbar = () => {
   const isDark = theme === "dark";
 
   return (
-    <div className="pointer-events-auto shadow-sm fixed dark:border-[#ffffff0f] top-0 left-0 right-0 z-[999] w-full bg-bg-color  border-b  lg:py-2">
+    <div className="pointer-events-auto shadow-sm sticky dark:border-[#ffffff0f] top-0 left-0 right-0 z-[999] w-full bg-bg-color  border-b  lg:py-2">
       <div className="px-8 h-16 flex gap-8 lg:gap-40 xl:gap-8 items-center justify-between">
         <Link href="/" className="flex gap-2 items-center w-full max-w-fit">
           <Image
@@ -133,7 +133,7 @@ const Navbar = () => {
             src="/braindao-logo.svg"
             alt="iq.wiki logo"
           />
-          <h1 className="text-xl font-semibold text-text-gray-900">IQ.wiki</h1>
+          <h1 className="text-xl font-semibold ">IQ.wiki</h1>
         </Link>
 
         <div className="hidden xl:flex flex-row gap-2">
@@ -174,7 +174,7 @@ const Navbar = () => {
               <NavigationMenu>
                 <NavigationMenuItem className="list-none">
                   <NavigationMenuTrigger className="font-semibold text-text-gray-900 dark:hover:text-text-gray-700">
-                    Menu
+                    More
                   </NavigationMenuTrigger>
                   <NavigationMenuContent className="py-2">
                     <ul className="w-[262px]">
