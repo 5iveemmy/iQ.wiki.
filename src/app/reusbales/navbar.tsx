@@ -30,7 +30,7 @@ import {
   RiUser3Fill,
 } from "react-icons/ri";
 import Link from "next/link";
-import { IoIosArrowDown } from "react-icons/io";
+import { IoIosArrowDown, IoMdMenu } from "react-icons/io";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -43,6 +43,7 @@ import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
 import { FaMoon, FaSun } from "react-icons/fa";
 import { useTheme } from "next-themes";
+import { Drawer, DrawerContent, DrawerTrigger } from "@/components/ui/drawer";
 
 const links: MenuLinks[] = [
   { href: "/", title: "Rank" },
@@ -122,7 +123,7 @@ const Navbar = () => {
   const isDark = theme === "dark";
 
   return (
-    <div className="shadow-sm fixed dark:border-[#ffffff0f] top-0 left-0 right-0 z-50 w-full bg-bg-color  border-b  lg:py-2">
+    <div className="pointer-events-auto shadow-sm fixed dark:border-[#ffffff0f] top-0 left-0 right-0 z-[999] w-full bg-bg-color  border-b  lg:py-2">
       <div className="px-8 h-16 flex gap-8 lg:gap-40 xl:gap-8 items-center justify-between">
         <Link href="/" className="flex gap-2 items-center w-full max-w-fit">
           <Image
@@ -244,6 +245,31 @@ const Navbar = () => {
               onClick={() => setTheme(isDark ? "light" : "dark")}
             />
           </div>
+          <Drawer
+            // title="Navigation"
+            // placement="right"
+            // onClose={() => setDrawerOpen(false)}
+            // open={isDrawerOpen}
+            // width={250}
+            direction={"top"}
+          >
+            <DrawerTrigger asChild>
+              <IoMdMenu size={28} className="xl:hidden cursor-pointer" />
+            </DrawerTrigger>
+            <DrawerContent className="mt-[50%]">
+              <div className="flex flex-col gap-4">
+                {links.map((link) => (
+                  <Link
+                    key={link.title}
+                    href={link.href}
+                    className="text-lg font-semibold"
+                  >
+                    {link.title}
+                  </Link>
+                ))}
+              </div>
+            </DrawerContent>
+          </Drawer>
         </div>
       </div>
     </div>
