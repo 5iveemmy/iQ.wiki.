@@ -30,8 +30,8 @@
   }
   .dark {
     --bg-color: 26 32 44;
-    --text-color: 255 255 255;
-
+    --text-color: 255, 255, 255;
+    --brand-800: 255, 26, 136;
     --background: 220 15% 15%;
     --foreground: 0 0% 98%;
     --popover: 220 26% 14%;

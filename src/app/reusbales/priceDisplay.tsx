@@ -13,7 +13,7 @@ interface Props {
 
 const PriceDisplay = ({ children, title, percentage, price, icon }: Props) => {
   return (
-    <div className="bg-transparent backdrop-filter backdrop-blur-sm border dark:border-alpha-300 border-gray-200 rounded-xl p-3 flex flex-col text-sm  w-full">
+    <div className="dark:border-text-color/15 bg-transparent backdrop-filter backdrop-blur-sm border dark:border-alpha-300 border-gray-200 rounded-xl p-3 flex flex-col text-sm  w-full">
       <h3 className="text-xs">{title}</h3>
       {children ? (
         <>{children}</>
