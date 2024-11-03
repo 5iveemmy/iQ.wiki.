@@ -33,7 +33,7 @@ const Header = () => {
         </h1>
       </div>
       <section className="-top-52 md:top-[-80px] xl:top-[-60px] relative px-4 lg:px-8 2xl:px-0 container mx-auto">
-        <div className="p-4 dark:border-text-color/15  dark:bg-gray-900/40 backdrop-filter backdrop-blur-sm bg-white/30 text-gray-600 rounded-xl dark:text-white flex md:grid xl:grid-cols-5 flex-col md:grid-cols-2 gap-4 flex-wrap border dark:border-alpha-300 border-gray-200">
+        <div className="p-4 dark:border-white/15  dark:bg-gray-900/40 backdrop-filter backdrop-blur-sm bg-white/30 text-gray-600 rounded-xl dark:text-white flex md:grid xl:grid-cols-5 flex-col md:grid-cols-2 gap-4 flex-wrap border dark:border-alpha-300 border-gray-200">
           {priceDisaplayData.map((item) => (
             <PriceDisplay key={item.title} {...item} />
           ))}

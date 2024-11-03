@@ -140,7 +140,7 @@ const Navbar = () => {
           <NavigationMenu>
             <NavigationMenuList className="gap-2">
               <NavigationMenuItem>
-                <NavigationMenuTrigger className="dark:hover:text-text-gray-700 font-semibold text-text-gray-900">
+                <NavigationMenuTrigger className="dark:hover:text-text-color/50 font-semibold text-text-gray-900">
                   Categories
                 </NavigationMenuTrigger>
 
@@ -164,7 +164,7 @@ const Navbar = () => {
                 <NavigationMenuItem key={link.title}>
                   <Link href={link.href} legacyBehavior passHref>
                     <NavigationMenuLink
-                      className={`${navigationMenuTriggerStyle()} font-semibold text-text-gray-900 dark:hover:text-text-gray-700`}
+                      className={`${navigationMenuTriggerStyle()} font-semibold text-text-gray-900 dark:hover:text-text-color/50`}
                     >
                       {link.title}
                     </NavigationMenuLink>
@@ -173,7 +173,7 @@ const Navbar = () => {
               ))}
               <NavigationMenu>
                 <NavigationMenuItem className="list-none">
-                  <NavigationMenuTrigger className="font-semibold text-text-gray-900 dark:hover:text-text-gray-700">
+                  <NavigationMenuTrigger className="font-semibold text-text-gray-900 dark:hover:text-text-color/50">
                     More
                   </NavigationMenuTrigger>
                   <NavigationMenuContent className="py-2">
@@ -203,7 +203,7 @@ const Navbar = () => {
             <DropdownMenuTrigger asChild>
               <Button
                 variant="ghost"
-                className=" text-text-gray-900 hover:bg-transparent dark:hover:text-text-gray-800 font-semibold "
+                className=" text-text-gray-900 hover:bg-transparent dark:hover:text-text-color/50 font-semibold "
               >
                 {abbr} <IoIosArrowDown />
               </Button>

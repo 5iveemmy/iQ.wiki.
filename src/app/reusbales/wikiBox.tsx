@@ -28,9 +28,13 @@ const WikiBox: React.FC<WikiBoxProps> = ({
           className="w-full h-full object-fill rounded-md"
         />
       </div>
-      <div className="flex flex-col ">
-        <p className="text-sm font-semibold text-text-gray-800">{title}</p>
-        <p className="text-xs font-medium text-text-gray-800">{desc}</p>
+      <div className="flex flex-col">
+        <p className="text-sm font-semibold text-text-gray-800 dark:text-white/80">
+          {title}
+        </p>
+        <p className="text-xs font-medium text-text-gray-800 dark:text-white/80">
+          {desc}
+        </p>
       </div>
     </div>
   );
