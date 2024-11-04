@@ -1,0 +1,315 @@
+import { Button } from "@/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuCheckboxItem,
+  DropdownMenuContent,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { Separator } from "@/components/ui/separator";
+import Image from "next/image";
+import Link from "next/link";
+import React from "react";
+import { IoIosArrowDown } from "react-icons/io";
+import {
+  RiCalendarEventFill,
+  RiDatabaseFill,
+  RiDiscordFill,
+  RiFacebookFill,
+  RiGithubFill,
+  RiGlobalLine,
+  RiHashtag,
+  RiHome5Fill,
+  RiInstagramFill,
+  RiMoreFill,
+  RiRedditFill,
+  RiSortAsc,
+  RiTelegramFill,
+  RiTwitterFill,
+} from "react-icons/ri";
+import { languages } from "../data";
+
+interface TextBoxProps {
+  title: string;
+  description: string;
+  button: React.ReactNode;
+}
+
+const TextBox = ({ title, description, button }: TextBoxProps) => (
+  <div className="flex flex-col justify-center lg:justify-normal items-center lg:items-start lg:w-[450px] gap-4">
+    <h1 className="text-xl font-bold">{title}</h1>
+    <p className="font-medium">{description}</p>
+    {button}
+  </div>
+);
+
+const socialIcons = [
+  {
+    icon: <RiTwitterFill className="h-7 w-6" />,
+    link: "https://twitter.com/IQWIKI",
+  },
+  {
+    icon: <RiRedditFill className="h-7 w-6" />,
+    link: "https://www.reddit.com/r/Everipedia/",
+  },
+  {
+    icon: <RiTelegramFill className="h-7 w-6" />,
+    link: "https://t.me/everipedia",
+  },
+  {
+    icon: <RiInstagramFill className="h-7 w-6" />,
+    link: "https://www.instagram.com/iqwiki_/",
+  },
+  {
+    icon: <RiGithubFill className="h-7 w-6" />,
+    link: "https://github.com/EveripediaNetwork",
+  },
+  {
+    icon: <RiDiscordFill className="h-7 w-6" />,
+    link: "https://discord.gg/x9EWvTcPXt",
+  },
+  {
+    icon: <RiFacebookFill className="h-7 w-6" />,
+    link: "https://www.facebook.com/iqdotwiki",
+  },
+];
+
+interface ListDisplayProps {
+  title: string;
+  items: { text: string; link: string; subtext?: string }[];
+}
+
+const ListDisplay = ({ title, items }: ListDisplayProps) => {
+  return (
+    <div className="flex items-center md:items-start gap-2 flex-col col-span-1">
+      <h2 className="font-bold">{title}</h2>
+      {items.map(({ text, link, subtext }) => (
+        <div key={text} className="flex items-center gap-2">
+          <a
+            href={link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:underline font-medium"
+          >
+            {text}
+          </a>
+          {subtext && (
+            <div className="whitespace-nowrap flex items-center justify-center py-3 px-2 h-4 w-fit bg-brand-500 text-white rounded-md dark:bg-brand-800 text-[10px]">
+              <p> {subtext}</p>
+            </div>
+          )}
+        </div>
+      ))}
+    </div>
+  );
+};
+
+const listData = [
+  {
+    title: "IQ",
+    items: [
+      { text: "What's IQ", link: "https://iq.wiki/wiki/iq/" },
+      { text: "Bridges", link: "https://learn.everipedia.org/iq/iq/bridges" },
+      { text: "Staking", link: "https://iq.braindao.org/dashboard/stake" },
+      { text: "Bonds", link: "https://app.bondprotocol.finance/#/market/1/80" },
+    ],
+  },
+  {
+    title: "Company",
+    items: [
+      { text: "About us", link: "/about/" },
+      {
+        text: "Careers",
+        subtext: "We are hiring",
+        link: "https://join.com/companies/iq",
+      },
+      { text: "Branding", link: "/branding/" },
+      { text: "IQ GPT", link: "https://iqgpt.com" },
+      { text: "IQ Dashboard", link: "https://iq.braindao.org" },
+    ],
+  },
+  {
+    title: "Resources",
+    items: [
+      { text: "Help", link: "https://learn.everipedia.org/iq/" },
+      { text: "Blog", link: "/blog/" },
+      { text: "FAQ", link: "/faq/" },
+      { text: "Glossary", link: "/glossary" },
+    ],
+  },
+  {
+    title: "Policies",
+    items: [
+      { text: "Guidelines", link: "/guidelines/" },
+      { text: "Privacy Policy", link: "/privacy/" },
+      { text: "Terms of Service", link: "/terms/" },
+      { text: "Your CA Privacy Rights", link: "/CaPrivacyRights/" },
+    ],
+  },
+];
+
+const hiddenNav = [
+  {
+    icon: <RiHome5Fill className="h-5 w-5" />,
+    text: "Home",
+    link: "/",
+  },
+  {
+    icon: <RiDatabaseFill className="h-5 w-5" />,
+    text: "Categories",
+    link: "/categories",
+  },
+  {
+    icon: <RiHashtag className="h-5 w-5" />,
+    text: "Rank",
+    link: "/rank",
+  },
+  {
+    icon: <RiCalendarEventFill className="h-5 w-5" />,
+    text: "Events",
+    link: "/events",
+  },
+  {
+    icon: <RiSortAsc className="h-5 w-5" />,
+    text: "Glossary",
+    link: "/glossary",
+  },
+  {
+    icon: <RiMoreFill className="h-5 w-5" />,
+    text: "More",
+    link: "/more",
+  },
+];
+
+const Footer = () => {
+  const [language, setLanguage] = React.useState<string>("English");
+  const [abbr, setAbbr] = React.useState<string>("EN");
+
+  return (
+    <footer className="bg-brand-background text-white">
+      <div className=" 2xl:max-w-[80%] w-[100%] mx-auto py-5 px-4">
+        <div className="py-10 grid-cols-1 grid lg:grid-cols-2 gap-8 lg:gap-0">
+          <TextBox
+            title="Join the IQ Brainlist"
+            description="Sign up for the IQ Brainlist to get access to editing on the
+              IQ.wiki site!"
+            button={
+              <Button className="dark:bg-brand-800 text-white bg-brand-500 h-12 w-fit px-10 text-md font-bold rounded-sm">
+                Join Now
+              </Button>
+            }
+          />
+          <TextBox
+            title="Subscribe to our newsletter"
+            description="The IQ Ecosystem Report will keep you updated on everything IQ."
+            button={
+              <Button className="text-black bg-white h-12 w-fit px-10 text-md font-bold rounded-sm">
+                Subscribe
+              </Button>
+            }
+          />
+        </div>
+        <Separator className="my-1 opacity-60 " />
+        <div className="md:grid gap-12 lg:gap-0 lg:grid-cols-12  py-10">
+          <div className="mb-6 md:mb-0 col-span-8 flex lg:items-start items-center justify-center  flex-col gap-1 lg:col-span-5">
+            <Image
+              priority
+              width="44"
+              height="40"
+              src="/braindao-logo.svg"
+              alt="iq.wiki logo"
+            />
+            <h1 className="text-xl font-semibold">IQ.wiki</h1>
+
+            <p className="pb-6 md:pb-0 text-center lg:text-left w-[80%] font-medium">
+              IQ.wiki&apos;s vision is to bring blockchain knowledge to the
+              world and knowledge onto the blockchain. A part of{" "}
+              <Link target="_blank" href="https://www.brainfund.com/">
+                Brainfun group
+              </Link>
+            </p>
+            <div className="pt-4 grid grid-cols-5 md:grid-cols-7 gap-3">
+              {socialIcons.map(({ icon, link }) => (
+                <a
+                  key={link}
+                  href={link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="cursor-pointer hover:bg-brand-600 text-white flex items-center justify-center dark:bg-brand-800  bg-brand-500  w-14 h-12 text-md font-bold rounded-sm"
+                >
+                  {icon}
+                </a>
+              ))}
+            </div>
+          </div>
+          <div className="pt-3 md:pt-0 col-span-7">
+            <div className="grid md:grid-cols-4 gap-12 md:gap-16 grid-cols-2">
+              {listData.map(({ title, items }) => (
+                <ListDisplay key={title} title={title} items={items} />
+              ))}
+            </div>
+          </div>
+        </div>
+        <div>
+          <Separator className="mt-2 opacity-60 " />
+          <div className="flex flex-col gap-5 lg:flex-row justify-center lg:justify-between items-center  py-4">
+            <p className="text-center text-sm font-medium">
+              © 2024 IQ.wiki Powered By BrainDAO & IQ
+            </p>
+            <div className="hidden md:block">
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <div className="flex items-center gap-2 ">
+                    <RiGlobalLine className="text-white h-6 w-6" />
+                    <p className="gap-2 text-white text-sm font-medium ">
+                      {abbr}
+                    </p>
+                    <IoIosArrowDown className="-ml-0.5 mt-1 w-3 h-3" />
+                  </div>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent className="w-56 py-2 px-0">
+                  {languages.map((item) => (
+                    <DropdownMenuCheckboxItem
+                      key={item.language}
+                      checked={language === item.language}
+                      onCheckedChange={() => {
+                        setLanguage(item.language);
+                        setAbbr(item.abbr);
+                      }}
+                      className="gap-2 items-center cursor-pointer text-base  dark:hover:bg-[#ffffff14]"
+                    >
+                      <Image
+                        src={item.flag}
+                        width="24"
+                        height="18"
+                        alt={`${item.language} flag`}
+                      />
+                      <p className="text-text-gray-900">{item.language}</p>
+                    </DropdownMenuCheckboxItem>
+                  ))}
+                </DropdownMenuContent>
+              </DropdownMenu>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="md:hidden fixed bottom-0 bg-bg-color  w-full border-t border-gray-200 dark:border-[#ffffff0f] h-[72px] px-4 flex items-center justify-between z-30">
+        {hiddenNav.map(({ text, link, icon }) => (
+          <a
+            href={link}
+            key={text}
+            className={`flex flex-col gap-2 items-center ${
+              window.location.pathname === link
+                ? "text-brand-800"
+                : "text-brand-500 dark:text-[#ffffff7a]"
+            } active:text-brand-800`}
+          >
+            {icon}
+            <span className="text-[10px]"> {text}</span>
+          </a>
+        ))}
+      </div>
+    </footer>
+  );
+};
+
+export default Footer;

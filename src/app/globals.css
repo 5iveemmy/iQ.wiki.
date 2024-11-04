@@ -5,9 +5,11 @@
   :root {
     --text-color: 74 85 104;
     --bg-color: 255 255 255;
+    --brand-500: 255, 92, 170;
+    --brand-600: 255, 77, 163;
     --brand-800: 255, 26, 136;
     --slate-100: 241 245 249;
-
+    --brand-background: 179, 64, 147;
     --background: 0 0% 100%;
     --foreground: 0 0% 3.9%;
     --card: 0 0% 100%;
@@ -32,6 +34,7 @@
     --bg-color: 26 32 44;
     --text-color: 255, 255, 255;
     --brand-800: 255, 26, 136;
+    --brand-background: 93, 23, 56;
     --background: 220 15% 15%;
     --foreground: 0 0% 98%;
     --popover: 220 26% 14%;

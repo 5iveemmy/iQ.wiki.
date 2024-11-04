@@ -195,9 +195,9 @@ const Navbar = () => {
             </NavigationMenuList>
           </NavigationMenu>
         </div>
-
-        <NavSearchField dropdownData={wikis} />
-
+        <div className="hidden">
+          <NavSearchField dropdownData={wikis} />
+        </div>
         <div className="flex gap-4 items-center">
           <DropdownMenu>
             <DropdownMenuTrigger asChild>

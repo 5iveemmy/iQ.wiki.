@@ -15,9 +15,12 @@ const config: Config = {
         "text-gray-900": "rgb(var(--text-color)/ 90%)",
         "text-gray-800": "rgb(var(--text-color)/ 80%)",
         "text-gray-700": "rgb(var(--text-color)/ 70%)",
+        "brand-500": "rgba(var(--brand-500))",
+        "brand-600": "rgba(var(--brand-600))",
         "brand-800": "rgba(var(--brand-800))",
         "slate-100": "rgba(var(--slate-100))",
         "bg-color": "rgba(var(--bg-color))",
+        "brand-background": "rgba(var(--brand-background))",
 
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
