@@ -11,6 +11,7 @@ interface Props {
     name: string;
     avatar: string;
   };
+  noHoverEffect?: boolean;
 }
 
 const CategoryCard = ({
@@ -19,9 +20,16 @@ const CategoryCard = ({
   description,
   timeEdited,
   author,
+  noHoverEffect,
 }: Props) => {
   return (
-    <div className="cursor-pointer flex flex-col gap-2 border dark:border-gray-700 border-gray-200 rounded-xl pb-2 hover:scale-105 transition-transform duration-300 ease-in-out">
+    <div
+      className={`"cursor-pointer flex flex-col gap-2 border dark:border-gray-700 border-gray-200 rounded-xl pb-2 ${
+        noHoverEffect
+          ? ""
+          : "hover:scale-105 transition-transform duration-300 ease-in-out"
+      } "`}
+    >
       <div className="h-80 md:h-72 xl:h-60">
         <Image
           alt="test"
@@ -33,7 +41,9 @@ const CategoryCard = ({
       </div>
       <div className="p-4">
         <div className="h-20">
-          <h1 className="text-sm lg:text-lg font-semibold mb-2">{name}</h1>
+          <h1 className="text-text-color text-sm lg:text-lg font-semibold mb-2">
+            {name}
+          </h1>
           <p className="dark:text-alpha-800 text-gray-600 text-xs lg:text-sm">
             {description}
           </p>
@@ -48,7 +58,7 @@ const CategoryCard = ({
               {author.name}
             </a>
           </div>
-          <div className="text-gray600 dark:text-alpha-800 text-xs xl:text-sm">
+          <div className="text-gray600 dark:text-alpha-800 text-xs xl:text-xs">
             Edited {timeEdited} ago
           </div>
         </div>

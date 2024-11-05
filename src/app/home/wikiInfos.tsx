@@ -4,6 +4,7 @@ import {
   RiCoinFill,
   RiCoinsFill,
   RiRobotFill,
+  RiStarFill,
   RiUserFill,
 } from "react-icons/ri";
 import {
@@ -25,6 +26,14 @@ import { IoArrowForwardSharp } from "react-icons/io5";
 import Image from "next/image";
 import { useTheme } from "next-themes";
 import WikiCategories from "./wikiCategories";
+import CategoryCard from "../reusbales/categoryCard";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselDots,
+  CarouselItem,
+} from "@/components/ui/carousel";
+import Autoplay from "embla-carousel-autoplay";
 
 const trendFilter = ["Today", "Last Week", "Last Month"];
 
@@ -116,11 +125,73 @@ const tabTriggers = [
   },
 ];
 
+const featuredWikis = [
+  {
+    img: "/sky.jpeg",
+    name: "Sky.Money",
+    description:
+      "Sky.money is a non-custodial gateway to the decentralized Sky Pro...",
+    timeEdited: "8 hours",
+    author: {
+      name: "zainab",
+      avatar: "/devmaz.jpeg",
+    },
+  },
+  {
+    img: "/alchemy.jpeg",
+    name: "Piere Person",
+    description:
+      "Pierre Person is the CEO of Usual, former French Deputy, and...",
+    timeEdited: "8 hours",
+    author: {
+      name: "vzbrv",
+      avatar: "/vz.jpeg",
+    },
+  },
+  {
+    img: "/ethena.jpeg",
+    name: "Ethena Usde",
+    description:
+      "Ethena USDe is a 1:1 collateralized on-chain stablecoin, powered ...",
+    timeEdited: "8 hours",
+    author: {
+      name: "vzbrv",
+      avatar: "/vz.jpeg",
+    },
+  },
+  {
+    img: "/peter.jpg",
+    name: "Peter Todd",
+    description:
+      "Peter Todd is a Bitcoin core developer and cryptographer, recentl...",
+    timeEdited: "8 hours",
+    author: {
+      name: "zainab",
+      avatar: "/devmaz.jpeg",
+    },
+  },
+  {
+    img: "/brain.jpeg",
+    name: "zkLLM",
+    description:
+      "zkLLM combines zero-knowledge proofs with large language models t...",
+    timeEdited: "8 hours",
+    author: {
+      name: "vzbrv",
+      avatar: "/vz.jpeg",
+    },
+  },
+];
+
 const WikiInfos = () => {
   const [filtestate, setTrendFilter] = React.useState<string>("Today");
   const { theme } = useTheme();
 
   const isDark = theme === "dark";
+
+  const plugin = React.useRef(
+    Autoplay({ delay: 2000, stopOnInteraction: true })
+  );
 
   return (
     <div className="relative">
@@ -184,6 +255,31 @@ const WikiInfos = () => {
                 desc={item.desc}
               />
             ))}
+          />
+          <WikiCard
+            title="Featured Wikis"
+            icon={<RiStarFill className="w-6 h-6 text-brand-800" />}
+            contentNode={
+              <Carousel
+                opts={{
+                  align: "start",
+                  loop: true,
+                }}
+                plugins={[plugin.current]}
+                onMouseEnter={plugin.current.stop}
+                onMouseLeave={plugin.current.reset}
+                className="w-full relative"
+              >
+                <CarouselContent className="ml-0 mr-4 mt-2">
+                  {featuredWikis.map((person) => (
+                    <CarouselItem key={person.name}>
+                      <CategoryCard {...person} noHoverEffect />
+                    </CarouselItem>
+                  ))}
+                </CarouselContent>
+                <CarouselDots className="py-5 text-red-300" />
+              </Carousel>
+            }
           />
         </div>
       </section>
