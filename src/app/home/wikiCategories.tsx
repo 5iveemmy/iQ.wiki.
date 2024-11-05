@@ -3,6 +3,16 @@ import Link from "next/link";
 import React from "react";
 import { IoArrowForwardSharp } from "react-icons/io5";
 import CategoryCard from "../reusbales/categoryCard";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselDots,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+import Image from "next/image";
+import Autoplay from "embla-carousel-autoplay";
 
 const tabTriggers = [
   { name: "People in Crypto", value: "people" },
@@ -62,7 +72,30 @@ const peopleInCrypto = [
   },
 ];
 
+const events = [
+  {
+    img: "/devcon.jpg",
+    name: "Devcon",
+  },
+  {
+    img: "/consensus.jpg",
+    name: "Consensus by Coindesk",
+  },
+  {
+    img: "/cosmo.jpg",
+    name: "Cosmoverse",
+  },
+  {
+    img: "/permissionless.jpg",
+    name: "Permissionless",
+  },
+];
+
 const WikiCategories = () => {
+  const plugin = React.useRef(
+    Autoplay({ delay: 2000, stopOnInteraction: true })
+  );
+
   return (
     <>
       <div className="relative overflow-x-clip">
@@ -109,6 +142,73 @@ const WikiCategories = () => {
             </TabsContent>
             <TabsContent value="crypto">Change your password here.</TabsContent>
           </Tabs>
+        </div>
+      </div>
+      <div className="relative overflow-x-clip">
+        <div className="absolute -z-10 -top-20 lg:-top-[500px] left-40 w-[400px] lg:h-[1326px] h-[0px] lg:w-[300px] -rotate-6 lg:-rotate-45 rounded-full bg-home-gradient dark:opacity-50 blur-[100px]" />
+        <div className="container mx-auto pb-10 pt-5 md:py-20 xl:py-24 px-4 lg:px-8 2xl:px-0">
+          <div className="flex flex-col md:flex-row gap-10 lg:gap-24 mt-10">
+            <div className="flex items-center flex-1 max-w-lg">
+              <div className="flex flex-col gap-6">
+                <h2 className="text-base lg:text-2xl font-semibold dark:text-alpha-900">
+                  Blockchain and Cryptocurrency Events
+                </h2>
+                <p className="text-sm md:text-base">
+                  Learn from the industry experts on crypto trends, explore
+                  investment opportunities, network with potential partners,
+                  connect with like-minded individuals, and cultivate
+                  relationship for future collaborations at global blockchain
+                  and crypto events and conferences.
+                </p>
+                <button className="cursor-pointer px-5 py-3 rounded-lg border dark:border-gray-700 border-gray-300 self-start dark:text-alpha-800 text-gray-600 text-xs lg:text-sm hidden md:block mt-2 hover:bg-gray-200 dark:hover:bg-alpha-50 transition-colors duration-300 delay-150 ease-in-out">
+                  View Events
+                </button>
+              </div>
+            </div>
+            <div className="flex-1">
+              <Carousel
+                opts={{
+                  align: "start",
+                  loop: true,
+                }}
+                plugins={[plugin.current]}
+                onMouseEnter={plugin.current.stop}
+                onMouseLeave={plugin.current.reset}
+                className="w-full relative"
+              >
+                <CarouselContent className="-ml-0">
+                  {events.map(({ img, name }) => (
+                    <CarouselItem
+                      key={img}
+                      className="h-80 md:basis-80 lg:basis-[400px] rounded-xl overflow-hidden relative ml-4"
+                    >
+                      <Image
+                        className="cover object-cover absolute rounded-xl min-w-full lg:min-w-40"
+                        alt="backdrop"
+                        src={img}
+                        fill={true}
+                        sizes="(max-width: 768px) 100vw, 768px"
+                      />{" "}
+                      <a className="absolute left-0 h-full bg-black/30 w-full flex flex-col justify-end px-2 py-5">
+                        <div className="text-alpha-900">
+                          <h5 className="text-xl font-semibold">{name}</h5>
+                        </div>
+                        <button
+                          type="button"
+                          className="px-2 py-[10px] mt-5 text-alpha-900 rounded-[6px] text-xs font-semibold backdrop-blur-[30px] bg-alpha-300 w-fit"
+                        >
+                          View event details
+                        </button>
+                      </a>
+                    </CarouselItem>
+                  ))}
+                </CarouselContent>
+                <CarouselPrevious className="dark:hover:text-slate-50  hover:bg-gray200 dark:hover:bg-alpha-300 border-gray200 dark:border-alpha-300 hidden md:flex justify-center items-center h-10 w-10 rounded-full -left-6 top-1/2 -translate-y-1/2 backdrop-blur-[30px] bg-alpha-300" />
+                <CarouselNext className="dark:hover:text-slate-50  hover:bg-gray200 dark:hover:bg-alpha-300 border-gray200 hidden md:flex justify-center items-center h-10 w-10 rounded-full -right-6 top-1/2 -translate-y-1/2 backdrop-blur-[30px] bg-alpha-300" />
+                <CarouselDots className="py-5 text-red-300" />
+              </Carousel>
+            </div>
+          </div>
         </div>
       </div>
     </>

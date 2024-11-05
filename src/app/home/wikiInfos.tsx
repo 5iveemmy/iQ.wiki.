@@ -266,7 +266,7 @@ const WikiInfos = () => {
                 About IQ Token
               </a>
             </div>
-            <div className="hidden lg:block -mb-86">
+            <div className="hidden lg:block -mb-96">
               <Image
                 width={1020}
                 height={768}

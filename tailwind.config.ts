@@ -11,6 +11,7 @@ const config: Config = {
     extend: {
       colors: {
         "alpha-50": "#ffffff0a",
+        "alpha-300": "#ffffff29",
         "alpha-400": "#ffffff3d",
         "alpha-600": "#ffffff7a",
         "alpha-800": "#ffffffcc",
