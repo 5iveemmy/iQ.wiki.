@@ -5,6 +5,9 @@
   :root {
     --text-color: 74 85 104;
     --bg-color: 255 255 255;
+    --brand-50: 255, 229, 241;
+    --brand-100: 255, 204, 228;
+    --brand-200: 255, 179, 215;
     --brand-500: 255, 92, 170;
     --brand-600: 255, 77, 163;
     --brand-800: 255, 26, 136;
@@ -70,4 +73,44 @@
   .container {
     max-width: 1400px;
   }
+}
+
+.bg-home-gradient {
+  background-image: linear-gradient(
+    180deg,
+    #ff5caa40 20%,
+    #7ce3fa40,
+    #f2acce50
+  );
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-thin-d::-webkit-scrollbar,
+.scrollbar-thin::-webkit-scrollbar {
+  width: 6px;
+}
+
+.scrollbar-extra-thin-d::-webkit-scrollbar,
+.scrollbar-extra-thin::-webkit-scrollbar {
+  width: 2px;
+}
+
+.scrollbar-extra-thin::-webkit-scrollbar-thumb,
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  border-radius: 3px;
+  background: #00000029;
+}
+
+.scrollbar-extra-thin-d::-webkit-scrollbar-thumb,
+.scrollbar-thin-d::-webkit-scrollbar-thumb {
+  border-radius: 3px;
+  background: #ffffff29;
 }
