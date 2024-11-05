@@ -24,6 +24,7 @@ import { BiImage } from "react-icons/bi";
 import { IoArrowForwardSharp } from "react-icons/io5";
 import Image from "next/image";
 import { useTheme } from "next-themes";
+import WikiCategories from "./wikiCategories";
 
 const trendFilter = ["Today", "Last Week", "Last Month"];
 
@@ -200,16 +201,16 @@ const WikiInfos = () => {
             </p>
           </div>
           <div className="pt-8">
-            <Tabs defaultValue="cryto">
+            <Tabs defaultValue="crypto">
               <div className="overflow-x-scroll scrollbar-hide">
                 <TabsList className="bg-transparent h-10 items-center justify-center rounded-md p-1 text-muted-foreground mb-4 space-x-6">
-                  {tabTriggers.map((item) => (
+                  {tabTriggers.map(({ icon, value, title }) => (
                     <TabsTrigger
                       className="justify-center whitespace-nowrap rounded-sm px-4 text-sm font-medium transition-all text-gray600 dark:text-alpha-800 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-brand-50 data-[state=active]:dark::bg-brand-500 data-[state=active]:dark:bg-brand-200 data-[state=active]:shadow-sm border-b-4 border-transparent data-[state=active]:dark:border-brand-800 data-[state=active]:border-brand-500 py-2 data-[state=active]:dark:text-brand-800 data-[state=active]:text-brand-500 flex flex-row items-center gap-2"
-                      value={item.value}
-                      key={item.title}
+                      value={value}
+                      key={value}
                     >
-                      {item.icon} {item.title}
+                      {icon} {title}
                     </TabsTrigger>
                   ))}
                 </TabsList>
@@ -295,6 +296,7 @@ const WikiInfos = () => {
           </div>
         </div>
       </div>
+      <WikiCategories />
     </div>
   );
 };
