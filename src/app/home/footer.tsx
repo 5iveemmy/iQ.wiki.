@@ -223,7 +223,7 @@ const Footer = () => {
               description="Sign up for the IQ Brainlist to get access to editing on the
               IQ.wiki site!"
               button={
-                <Button className="dark:bg-brand-800 text-white bg-brand-500 h-12 w-fit px-10 text-md font-bold rounded-sm">
+                <Button className="hover:bg-brand-500/80 dark:bg-brand-800 text-white bg-brand-500 h-12 w-fit px-10 text-md font-bold rounded-sm">
                   Join Now
                 </Button>
               }
@@ -232,7 +232,7 @@ const Footer = () => {
               title="Subscribe to our newsletter"
               description="The IQ Ecosystem Report will keep you updated on everything IQ."
               button={
-                <Button className="text-black bg-white h-12 w-fit px-10 text-md font-bold rounded-sm">
+                <Button className="hover:bg-white/90 text-black bg-white h-12 w-fit px-10 text-md font-bold rounded-sm">
                   Subscribe
                 </Button>
               }
