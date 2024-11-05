@@ -10,7 +10,9 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        "alpha-50": "#ffffff0a",
         "alpha-400": "#ffffff3d",
+        "alpha-900": "#ffffffeb",
         "text-color": "rgba(var(--text-color))",
         "text-gray-900": "rgb(var(--text-color)/ 90%)",
         "text-gray-800": "rgb(var(--text-color)/ 80%)",
