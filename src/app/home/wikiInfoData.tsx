@@ -149,7 +149,7 @@ export const columns: ColumnDef<Cryptos, AddOnProps>[] = [
               <span key={index}>
                 {founder}
                 {index < founders.length - 1 && (
-                  <span className="text-white"> , </span>
+                  <span className="text-text-color"> , </span>
                 )}
               </span>
             ))
@@ -172,7 +172,7 @@ export const columns: ColumnDef<Cryptos, AddOnProps>[] = [
               <span key={index}>
                 {blockchain}
                 {index < blockchains.length - 1 && (
-                  <span className="text-white"> , </span>
+                  <span className="text-text-color"> , </span>
                 )}
               </span>
             ))
