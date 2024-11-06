@@ -48,7 +48,7 @@ const ListDisplay = ({ title, items }: ListDisplayProps) => {
     <div className="flex items-center md:items-start gap-2 flex-col col-span-1">
       <h2 className="font-bold">{title}</h2>
       {items.map(({ text, link, subtext }) => (
-        <div key={text} className="flex items-center gap-2">
+        <div key={text} className="flex text-center items-center gap-2">
           <a
             href={link}
             target="_blank"
