@@ -67,7 +67,12 @@ const ListDisplay = ({ title, items }: ListDisplayProps) => {
   );
 };
 
-const Footer = () => {
+interface Props {
+  SetNavbar: React.Dispatch<React.SetStateAction<boolean>>;
+  navbar: boolean;
+}
+
+const Footer = ({ SetNavbar, navbar }: Props) => {
   const [language, setLanguage] = React.useState<string>("English");
   const [abbr, setAbbr] = React.useState<string>("EN");
 
@@ -88,6 +93,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
+
       <footer className="bg-brand-background text-white">
         <div className=" 2xl:max-w-[80%] w-[100%] mx-auto py-5 px-4">
           <div className="py-10 grid-cols-1 grid lg:grid-cols-2 gap-8 lg:gap-0">
@@ -111,7 +117,9 @@ const Footer = () => {
               }
             />
           </div>
+
           <Separator className="my-1 opacity-60 " />
+
           <div className="md:grid gap-12 lg:gap-0 lg:grid-cols-12  py-10">
             <div className="mb-6 md:mb-0 col-span-8 flex lg:items-start items-center justify-center  flex-col gap-1 lg:col-span-5">
               <Image
@@ -144,6 +152,7 @@ const Footer = () => {
                 ))}
               </div>
             </div>
+
             <div className="pt-3 md:pt-0 col-span-7">
               <div className="grid md:grid-cols-4 gap-12 md:gap-16 grid-cols-2">
                 {listData.map(({ title, items }) => (
@@ -152,6 +161,7 @@ const Footer = () => {
               </div>
             </div>
           </div>
+
           <div>
             <Separator className="mt-2 opacity-60 " />
             <div className="flex flex-col gap-5 lg:flex-row justify-center lg:justify-between items-center  py-4">
@@ -195,6 +205,7 @@ const Footer = () => {
             </div>
           </div>
         </div>
+
         <div className="md:hidden fixed bottom-0 bg-bg-color  w-full border-t border-gray-200 dark:border-[#ffffff0f] h-[72px] px-4 flex items-center justify-between z-30">
           {hiddenNav.map(({ text, link, icon }) => (
             <a
@@ -210,7 +221,7 @@ const Footer = () => {
               <span className="text-[10px]"> {text}</span>
             </a>
           ))}
-          <Sheet>
+          <Sheet onOpenChange={() => SetNavbar(!navbar)}>
             <SheetTrigger>
               <div className="cursor-pointer flex flex-col gap-2 items-center text-brand-500 dark:text-[#ffffff7a] active:text-brand-800">
                 <RiMoreFill className="h-5 w-5" />
@@ -218,7 +229,7 @@ const Footer = () => {
               </div>
             </SheetTrigger>
             <SheetContent className="px-0 z-[9999] w-full">
-              <SheetHeader className="pb-6 border-b border-gray-300 dark:border-gray-600">
+              <SheetHeader className="pb-3 border-b border-gray-300 dark:border-gray-600">
                 <SheetTitle className="px-6 flex gap-2 items-center w-full max-w-fit">
                   <Image
                     priority

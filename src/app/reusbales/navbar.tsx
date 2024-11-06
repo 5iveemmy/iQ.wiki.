@@ -45,7 +45,11 @@ import {
 } from "react-icons/ri";
 import { AiOutlineClose } from "react-icons/ai";
 
-const Navbar = () => {
+interface Props {
+  navbar: boolean;
+}
+
+const Navbar = ({ navbar }: Props) => {
   const [language, setLanguage] = React.useState<string>("English");
   const [abbr, setAbbr] = React.useState<string>("EN");
   const [isOpen, setIsOpen] = React.useState<boolean>(false);
@@ -55,7 +59,11 @@ const Navbar = () => {
 
   return (
     <>
-      <div className="pointer-events-auto shadow-sm sticky dark:border-[#ffffff0f] top-0 left-0 right-0 z-[999] w-full bg-bg-color  border-b  lg:py-2">
+      <div
+        className={`${
+          navbar ? "hidden" : "block"
+        } pointer-events-auto shadow-sm sticky dark:border-[#ffffff0f] top-0 left-0 right-0 z-[999] w-full bg-bg-color  border-b  lg:py-2`}
+      >
         <div className="px-4 lg:px-8 h-16 flex gap-8 lg:gap-40 xl:gap-8 items-center justify-between">
           <Link href="/" className="flex gap-2 items-center w-full max-w-fit">
             <Image
@@ -129,9 +137,7 @@ const Navbar = () => {
             </NavigationMenu>
           </div>
 
-          <div className="hidden">
-            <NavSearchField dropdownData={wikis} />
-          </div>
+          <NavSearchField dropdownData={wikis} />
 
           <div className="flex gap-4 items-center">
             <DropdownMenu>
