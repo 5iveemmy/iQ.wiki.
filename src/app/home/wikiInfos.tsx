@@ -1,12 +1,5 @@
 import React from "react";
-import {
-  RiBarChartFill,
-  RiCoinFill,
-  RiCoinsFill,
-  RiRobotFill,
-  RiStarFill,
-  RiUserFill,
-} from "react-icons/ri";
+import { RiBarChartFill, RiStarFill } from "react-icons/ri";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -21,7 +14,6 @@ import WikiCard from "../reusbales/wikiCard";
 import { RiDatabaseFill } from "react-icons/ri";
 import { TiArrowRight } from "react-icons/ti";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { BiImage } from "react-icons/bi";
 import { IoArrowForwardSharp } from "react-icons/io5";
 import Image from "next/image";
 import { useTheme } from "next-themes";
@@ -34,154 +26,16 @@ import {
   CarouselItem,
 } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
-
-const trendFilter = ["Today", "Last Week", "Last Month"];
-
-const trendingWikis: Wikis[] = [
-  {
-    title: "Truth Terminal",
-    desc: "Truth Terminal is an AI chatbot that became a crypto millonaire...",
-    img: "/bird.jpg",
-  },
-  {
-    title: "Luke Belmar",
-    desc: "Luke Belmar is a digital entrepreneur, crypto investor, and found...",
-    img: "/luke.jpg",
-  },
-  {
-    title: "Peter Todd",
-    desc: "Peter Todd is a Bitcoin core developer and cryptographer, recentl...",
-    img: "/peter.jpg",
-  },
-  {
-    title: "Andy Ayrey",
-    desc: "Andy Ayrey is an AI researcher and developer, known for creating ...",
-    img: "/andy.jpg",
-  },
-  {
-    title: "IQ token",
-    desc: "Andy Ayrey is an AI researcher and developer, known for creating ...",
-    img: "/iq-token.jpg",
-  },
-];
-
-const wikiCategories: Wikis[] = [
-  {
-    title: "Cryptocurrencies",
-    desc: "This cryptocurrency category covers all cryptocurrencies from Bitcoiin to IQ",
-    img: "/cryptocurrencies-card.png",
-  },
-  {
-    title: "DAOs",
-    desc: "The DAOs category covers decentralized autonomous organizations of all kinds from Defi DAOs like...",
-    img: "/daos-card.png",
-  },
-  {
-    title: "Decentralized Applications",
-    desc: "The Decentralized Applications (dapps) category covers everything from time-weighted average...",
-    img: "/dapps-card.jpg",
-  },
-  {
-    title: "Decentralized Finance",
-    desc: "The Decentralized Finance (DeFi) category covers everything from stablecoin projects like Frax Finance...",
-    img: "/defi-card.png",
-  },
-  {
-    title: "Organizations",
-    desc: "The Organization category covers companies and other organizations that develop, implement, or untili...",
-    img: "/organizations-card.png",
-  },
-];
-
-const tabTriggers = [
-  {
-    icon: (
-      <RiCoinsFill className="text-brand-500 dark:text-brand-800 w-6 h-6" />
-    ),
-    title: "Cryptocurrencies",
-    value: "crypto",
-  },
-  {
-    icon: <RiCoinFill className="text-brand-500 dark:text-brand-800 w-6 h-6" />,
-    title: "Stablecoins",
-    value: "stable",
-  },
-  {
-    icon: (
-      <RiRobotFill className="text-brand-500 dark:text-brand-800 w-6 h-6" />
-    ),
-    title: "AI Tokens",
-    value: "tokens",
-  },
-  {
-    icon: <RiUserFill className="text-brand-500 dark:text-brand-800 w-6 h-6" />,
-    title: "Founders",
-    value: "founders",
-  },
-  {
-    icon: <BiImage className="text-brand-500 dark:text-brand-800 w-6 h-6" />,
-    title: "NFTs",
-    value: "nfts",
-  },
-];
-
-const featuredWikis = [
-  {
-    img: "/sky.jpeg",
-    name: "Sky.Money",
-    description:
-      "Sky.money is a non-custodial gateway to the decentralized Sky Pro...",
-    timeEdited: "8 hours",
-    author: {
-      name: "zainab",
-      avatar: "/devmaz.jpeg",
-    },
-  },
-  {
-    img: "/alchemy.jpeg",
-    name: "Piere Person",
-    description:
-      "Pierre Person is the CEO of Usual, former French Deputy, and...",
-    timeEdited: "8 hours",
-    author: {
-      name: "vzbrv",
-      avatar: "/vz.jpeg",
-    },
-  },
-  {
-    img: "/ethena.jpeg",
-    name: "Ethena Usde",
-    description:
-      "Ethena USDe is a 1:1 collateralized on-chain stablecoin, powered ...",
-    timeEdited: "8 hours",
-    author: {
-      name: "vzbrv",
-      avatar: "/vz.jpeg",
-    },
-  },
-  {
-    img: "/peter.jpg",
-    name: "Peter Todd",
-    description:
-      "Peter Todd is a Bitcoin core developer and cryptographer, recentl...",
-    timeEdited: "8 hours",
-    author: {
-      name: "zainab",
-      avatar: "/devmaz.jpeg",
-    },
-  },
-  {
-    img: "/brain.jpeg",
-    name: "zkLLM",
-    description:
-      "zkLLM combines zero-knowledge proofs with large language models t...",
-    timeEdited: "8 hours",
-    author: {
-      name: "vzbrv",
-      avatar: "/vz.jpeg",
-    },
-  },
-];
+import {
+  columns,
+  featuredWikis,
+  tableData,
+  tabTriggers,
+  trendFilter,
+  trendingWikis,
+  wikiCategories,
+} from "./wikiInfoData";
+import { CustomTable } from "../reusbales/table";
 
 const WikiInfos = () => {
   const [filtestate, setTrendFilter] = React.useState<string>("Today");
@@ -235,6 +89,7 @@ const WikiInfos = () => {
               />
             ))}
           />
+
           <WikiCard
             title="Wiki Categories"
             icon={<RiDatabaseFill className="w-6 h-6 text-brand-800" />}
@@ -256,6 +111,7 @@ const WikiInfos = () => {
               />
             ))}
           />
+
           <WikiCard
             title="Featured Wikis"
             icon={<RiStarFill className="w-6 h-6 text-brand-800" />}
@@ -283,6 +139,7 @@ const WikiInfos = () => {
           />
         </div>
       </section>
+
       <div className="relative overflow-x-clip">
         <div className="absolute -z-10 -top-20 lg:-top-60 right-40 w-[400px] lg:h-[1326px] h-[0px] lg:w-[300px] rotate-6 lg:rotate-45 rounded-[100%] bg-home-gradient dark:opacity-50 blur-[100px]"></div>
         <div className="w-full container px-4 lg:px-8 2xl:px-0 mx-auto mb-20">
@@ -296,6 +153,7 @@ const WikiInfos = () => {
               respectively.
             </p>
           </div>
+
           <div className="pt-8">
             <Tabs defaultValue="crypto">
               <div className="overflow-x-scroll scrollbar-hide">
@@ -312,7 +170,7 @@ const WikiInfos = () => {
                 </TabsList>
               </div>
               <TabsContent value="crypto">
-                Make changes to your account here.
+                <CustomTable data={tableData} columns={columns} />
               </TabsContent>
               <TabsContent value="password">
                 Change your password here.
@@ -321,6 +179,7 @@ const WikiInfos = () => {
           </div>
         </div>
       </div>
+
       <div className="container mx-auto px-4 lg:px-8 2xl:px-0 relative pb-20 pt-0 lg:py-20">
         <div className="flex flex-col gap-2 lg:gap-6 dark:bg-alpha-50 bg-slate-100 justify-center items-center pt-6 rounded-xl md:mb-72 lg:mb-96 px-0 lg:px-8 xl:px-0">
           <div className="flex flex-row gap-2 bg-brand-50 dark:bg-brand-100 rounded-2xl text-brand-500 dark:text-brand-800 p-1">
@@ -337,6 +196,7 @@ const WikiInfos = () => {
               <IoArrowForwardSharp />
             </a>
           </div>
+
           <div className="flex flex-col gap-4 text-center items-center">
             <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-gray-900 dark:text-white text-center">
               IQ GPT - The AI Agent for Blockchain Knowledge
@@ -347,6 +207,7 @@ const WikiInfos = () => {
               powered by the IQ token, which enables holders to participate in
               governance and get access to additional features.
             </p>
+
             <div className="flex flex-row gap-5 my-4">
               <a
                 target="_blank"
@@ -362,6 +223,7 @@ const WikiInfos = () => {
                 About IQ Token
               </a>
             </div>
+
             <div className="hidden lg:block -mb-96">
               <Image
                 width={1020}
@@ -371,6 +233,7 @@ const WikiInfos = () => {
                 alt="iqgpt-mockup"
               />
             </div>
+
             <div className="hidden md:block lg:hidden -mb-80">
               <Image
                 width={620}
@@ -380,6 +243,7 @@ const WikiInfos = () => {
                 alt="iqgpt-mockup"
               />
             </div>
+
             <div className="block md:hidden">
               <Image
                 width={500}

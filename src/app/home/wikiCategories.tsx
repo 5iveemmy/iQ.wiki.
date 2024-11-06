@@ -140,7 +140,6 @@ const WikiCategories = () => {
                 <CategoryCard key={person.name} {...person} />
               ))}
             </TabsContent>
-            <TabsContent value="crypto">Change your password here.</TabsContent>
           </Tabs>
         </div>
       </div>
