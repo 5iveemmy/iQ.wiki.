@@ -1,3 +1,4 @@
+"use client";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -20,7 +21,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { menuItems, mobileNavLinks } from "../reusbales/navbarData";
+import { menuItems } from "../reusbales/navbarData";
 import { discoveries, hiddenNav, listData, socialIcons } from "./footerData";
 
 interface TextBoxProps {

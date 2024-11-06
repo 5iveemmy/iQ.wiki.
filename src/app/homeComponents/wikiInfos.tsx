@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import { RiBarChartFill, RiStarFill } from "react-icons/ri";
 import {

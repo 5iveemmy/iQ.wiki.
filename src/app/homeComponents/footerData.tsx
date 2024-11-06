@@ -1,5 +1,4 @@
 import {
-  RiBook2Fill,
   RiCalendarEventFill,
   RiDatabaseFill,
   RiDiscordFill,
