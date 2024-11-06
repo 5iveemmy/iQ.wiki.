@@ -4,7 +4,7 @@ declare global {
   interface MenuItems {
     title: string;
     icon: React.JSX.Element;
-    href: string;
+    href?: string;
   }
 
   interface Languages {

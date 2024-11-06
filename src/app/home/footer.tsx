@@ -10,24 +10,18 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { IoIosArrowDown } from "react-icons/io";
-import {
-  RiCalendarEventFill,
-  RiDatabaseFill,
-  RiDiscordFill,
-  RiFacebookFill,
-  RiGithubFill,
-  RiGlobalLine,
-  RiHashtag,
-  RiHome5Fill,
-  RiInstagramFill,
-  RiMoreFill,
-  RiRedditFill,
-  RiSortAsc,
-  RiTelegramFill,
-  RiTwitterFill,
-} from "react-icons/ri";
+import { RiGlobalLine, RiMoreFill } from "react-icons/ri";
 import { languages } from "../data";
-import { Drawer, DrawerContent, DrawerTrigger } from "@/components/ui/drawer";
+import {
+  Sheet,
+  SheetClose,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
+import { menuItems, mobileNavLinks } from "../reusbales/navbarData";
+import { discoveries, hiddenNav, listData, socialIcons } from "./footerData";
 
 interface TextBoxProps {
   title: string;
@@ -42,37 +36,6 @@ const TextBox = ({ title, description, button }: TextBoxProps) => (
     {button}
   </div>
 );
-
-const socialIcons = [
-  {
-    icon: <RiTwitterFill className="h-7 w-6" />,
-    link: "https://twitter.com/IQWIKI",
-  },
-  {
-    icon: <RiRedditFill className="h-7 w-6" />,
-    link: "https://www.reddit.com/r/Everipedia/",
-  },
-  {
-    icon: <RiTelegramFill className="h-7 w-6" />,
-    link: "https://t.me/everipedia",
-  },
-  {
-    icon: <RiInstagramFill className="h-7 w-6" />,
-    link: "https://www.instagram.com/iqwiki_/",
-  },
-  {
-    icon: <RiGithubFill className="h-7 w-6" />,
-    link: "https://github.com/EveripediaNetwork",
-  },
-  {
-    icon: <RiDiscordFill className="h-7 w-6" />,
-    link: "https://discord.gg/x9EWvTcPXt",
-  },
-  {
-    icon: <RiFacebookFill className="h-7 w-6" />,
-    link: "https://www.facebook.com/iqdotwiki",
-  },
-];
 
 interface ListDisplayProps {
   title: string;
@@ -103,96 +66,6 @@ const ListDisplay = ({ title, items }: ListDisplayProps) => {
     </div>
   );
 };
-
-const listData = [
-  {
-    title: "IQ",
-    items: [
-      { text: "What's IQ", link: "https://iq.wiki/wiki/iq/" },
-      { text: "Bridges", link: "https://learn.everipedia.org/iq/iq/bridges" },
-      { text: "Staking", link: "https://iq.braindao.org/dashboard/stake" },
-      { text: "Bonds", link: "https://app.bondprotocol.finance/#/market/1/80" },
-    ],
-  },
-  {
-    title: "Company",
-    items: [
-      { text: "About us", link: "/about/" },
-      {
-        text: "Careers",
-        subtext: "We are hiring",
-        link: "https://join.com/companies/iq",
-      },
-      { text: "Branding", link: "/branding/" },
-      { text: "IQ GPT", link: "https://iqgpt.com" },
-      { text: "IQ Dashboard", link: "https://iq.braindao.org" },
-    ],
-  },
-  {
-    title: "Resources",
-    items: [
-      { text: "Help", link: "https://learn.everipedia.org/iq/" },
-      { text: "Blog", link: "/blog/" },
-      { text: "FAQ", link: "/faq/" },
-      { text: "Glossary", link: "/glossary" },
-    ],
-  },
-  {
-    title: "Policies",
-    items: [
-      { text: "Guidelines", link: "/guidelines/" },
-      { text: "Privacy Policy", link: "/privacy/" },
-      { text: "Terms of Service", link: "/terms/" },
-      { text: "Your CA Privacy Rights", link: "/CaPrivacyRights/" },
-    ],
-  },
-];
-
-const hiddenNav = [
-  {
-    icon: <RiHome5Fill className="h-5 w-5" />,
-    text: "Home",
-    link: "/",
-  },
-  {
-    icon: <RiDatabaseFill className="h-5 w-5" />,
-    text: "Categories",
-    link: "/categories",
-  },
-  {
-    icon: <RiHashtag className="h-5 w-5" />,
-    text: "Rank",
-    link: "/rank",
-  },
-  {
-    icon: <RiCalendarEventFill className="h-5 w-5" />,
-    text: "Events",
-    link: "/events",
-  },
-  {
-    icon: <RiSortAsc className="h-5 w-5" />,
-    text: "Glossary",
-    link: "/glossary",
-  },
-];
-
-const discoveries = [
-  "Protocols",
-  "Blockchains",
-  "Founders",
-  "Ethereum",
-  "AI",
-  "Online",
-  "Organizations",
-  "PeopleinDefi",
-  "Glossary",
-  "BinanaceSmartChain",
-  "Entertainment",
-  "Solana",
-  "Memecoins",
-  "Events",
-  "DEXes",
-];
 
 const Footer = () => {
   const [language, setLanguage] = React.useState<string>("English");
@@ -337,20 +210,40 @@ const Footer = () => {
               <span className="text-[10px]"> {text}</span>
             </a>
           ))}
-
-          <Drawer direction="right">
-            <DrawerTrigger asChild>
+          <Sheet>
+            <SheetTrigger>
               <div className="cursor-pointer flex flex-col gap-2 items-center text-brand-500 dark:text-[#ffffff7a] active:text-brand-800">
                 <RiMoreFill className="h-5 w-5" />
                 <span className="text-[10px]"> More</span>
               </div>
-            </DrawerTrigger>
-            <DrawerContent className="mt-[50%]">
-              <div className="flex flex-col gap-4">
-                <p>text</p>
+            </SheetTrigger>
+            <SheetContent className="px-0 z-[9999] w-full">
+              <SheetHeader className="pb-6 border-b border-gray-300 dark:border-gray-600">
+                <SheetTitle className="px-6 flex gap-2 items-center w-full max-w-fit">
+                  <Image
+                    priority
+                    width="44"
+                    height="40"
+                    src="/braindao-logo.svg"
+                    alt="iq.wiki logo"
+                  />
+                  <p className="text-xl font-semibold ">IQ.wiki</p>
+                </SheetTitle>
+                <SheetClose className="hidden" />
+              </SheetHeader>
+              <div className="text-gray-600 dark:text-white/80 pt-5 px-4 lg:px-10 flex flex-col gap-5">
+                {menuItems.map(({ icon, title }) => (
+                  <div
+                    key={title}
+                    className="cursor-pointer flex items-center gap-4"
+                  >
+                    {icon}
+                    <p className="text-lg font-semibold">{title}</p>
+                  </div>
+                ))}
               </div>
-            </DrawerContent>
-          </Drawer>
+            </SheetContent>
+          </Sheet>
         </div>
       </footer>
     </>
