@@ -85,7 +85,7 @@ export const columns: ColumnDef<Cryptos, AddOnProps>[] = [
   },
   {
     accessorKey: "name",
-    header: () => <p className="text-left">Name</p>,
+    header: () => <p className="min-w-32">Name</p>,
     cell: (info: CellContext<Cryptos, AddOnProps>) => {
       return (
         <div className="flex items-center gap-2">
@@ -139,11 +139,11 @@ export const columns: ColumnDef<Cryptos, AddOnProps>[] = [
   },
   {
     accessorKey: "founderIndex",
-    header: () => <p>Crypto Founder Index</p>,
+    header: () => <p className="min-w-52">Crypto Founder Index</p>,
     cell: ({ row }) => {
       const founders: string[] | string = row.getValue("founderIndex");
       return (
-        <div className="text-brand-800 font-medium text-wrap max-w-60">
+        <div className="text-brand-800 font-medium text-wrap">
           {Array.isArray(founders) ? (
             founders.map((founder, index) => (
               <span key={index}>
@@ -162,11 +162,11 @@ export const columns: ColumnDef<Cryptos, AddOnProps>[] = [
   },
   {
     accessorKey: "blockchain",
-    header: () => <p>Blockchain</p>,
+    header: () => <p className="min-w-52">Blockchain</p>,
     cell: ({ row }) => {
       const blockchains: string[] | string = row.getValue("founderIndex");
       return (
-        <div className="text-brand-800 font-medium text-wrap max-w-60">
+        <div className="text-brand-800 font-medium text-wrap">
           {Array.isArray(blockchains) ? (
             blockchains.map((blockchain, index) => (
               <span key={index}>

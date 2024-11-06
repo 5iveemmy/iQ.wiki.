@@ -58,61 +58,59 @@ export function CustomTable({ data, columns }: Props) {
   });
 
   return (
-    <div className="w-full">
-      <div>
-        <Table>
-          <TableHeader>
-            {table.getHeaderGroups().map((headerGroup) => (
+    <div>
+      <Table className="w-full overflow-x-auto whitespace-nowrap">
+        <TableHeader>
+          {table.getHeaderGroups().map((headerGroup) => (
+            <TableRow
+              key={headerGroup.id}
+              className="hover:bg-transparent dark:hover:bg-bg-color"
+            >
+              {headerGroup.headers.map((header) => {
+                return (
+                  <TableHead
+                    key={header.id}
+                    className="py-3 h-0 px-6 whitespace-nowrap"
+                  >
+                    {header.isPlaceholder
+                      ? null
+                      : flexRender(
+                          header.column.columnDef.header,
+                          header.getContext()
+                        )}
+                  </TableHead>
+                );
+              })}
+            </TableRow>
+          ))}
+        </TableHeader>
+        <TableBody>
+          {table.getRowModel().rows?.length ? (
+            table.getRowModel().rows.map((row) => (
               <TableRow
-                key={headerGroup.id}
-                className="hover:bg-transparent dark:hover:bg-bg-color"
+                key={row.id}
+                data-state={row.getIsSelected() && "selected"}
+                className="hover:bg-white/5"
               >
-                {headerGroup.headers.map((header) => {
-                  return (
-                    <TableHead key={header.id} className="py-3 h-0 px-6">
-                      {header.isPlaceholder
-                        ? null
-                        : flexRender(
-                            header.column.columnDef.header,
-                            header.getContext()
-                          )}
-                    </TableHead>
-                  );
-                })}
+                {row.getVisibleCells().map((cell) => (
+                  <TableCell
+                    key={cell.id}
+                    className="py-4 px-6 whitespace-nowrap"
+                  >
+                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                  </TableCell>
+                ))}
               </TableRow>
-            ))}
-          </TableHeader>
-          <TableBody>
-            {table.getRowModel().rows?.length ? (
-              table.getRowModel().rows.map((row) => (
-                <TableRow
-                  key={row.id}
-                  data-state={row.getIsSelected() && "selected"}
-                  className="hover:bg-white/5"
-                >
-                  {row.getVisibleCells().map((cell) => (
-                    <TableCell key={cell.id} className="py-4 px-6">
-                      {flexRender(
-                        cell.column.columnDef.cell,
-                        cell.getContext()
-                      )}
-                    </TableCell>
-                  ))}
-                </TableRow>
-              ))
-            ) : (
-              <TableRow>
-                <TableCell
-                  colSpan={columns.length}
-                  className="h-24 text-center"
-                >
-                  No results.
-                </TableCell>
-              </TableRow>
-            )}
-          </TableBody>
-        </Table>
-      </div>
+            ))
+          ) : (
+            <TableRow>
+              <TableCell colSpan={columns.length} className="h-24 text-center">
+                No results.
+              </TableCell>
+            </TableRow>
+          )}
+        </TableBody>
+      </Table>
     </div>
   );
 }
