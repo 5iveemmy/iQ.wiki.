@@ -44,6 +44,7 @@ import {
   RiTwitterFill,
 } from "react-icons/ri";
 import { AiOutlineClose } from "react-icons/ai";
+import MobileSearchDialog from "./mobileSearchDialog";
 
 interface Props {
   navbar: boolean;
@@ -137,43 +138,47 @@ const Navbar = ({ navbar }: Props) => {
             </NavigationMenu>
           </div>
 
-          <NavSearchField dropdownData={wikis} />
+          <div className="hidden lg:block w-full">
+            <NavSearchField dropdownData={wikis} />
+          </div>
 
           <div className="flex gap-4 items-center">
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button
-                  variant="ghost"
-                  className=" text-text-gray-900 hover:bg-transparent dark:hover:text-text-color/50 font-semibold "
-                >
-                  {abbr} <IoIosArrowDown />
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent className="w-56 py-2 px-0">
-                {languages.map((item) => (
-                  <DropdownMenuCheckboxItem
-                    key={item.language}
-                    checked={language === item.language}
-                    onCheckedChange={() => {
-                      setLanguage(item.language);
-                      setAbbr(item.abbr);
-                    }}
-                    className="gap-2 items-center cursor-pointer text-base  dark:hover:bg-[#ffffff14]"
+            <div className="hidden">
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button
+                    variant="ghost"
+                    className="px-0 text-text-gray-900 hover:bg-transparent dark:hover:text-text-color/50 font-semibold "
                   >
-                    <Image
-                      src={item.flag}
-                      width="24"
-                      height="18"
-                      alt={`${item.language} flag`}
-                    />
-                    <p className="text-text-gray-900">{item.language}</p>
-                  </DropdownMenuCheckboxItem>
-                ))}
-              </DropdownMenuContent>
-            </DropdownMenu>
+                    {abbr} <IoIosArrowDown />
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent className="w-56 py-2 px-0">
+                  {languages.map((item) => (
+                    <DropdownMenuCheckboxItem
+                      key={item.language}
+                      checked={language === item.language}
+                      onCheckedChange={() => {
+                        setLanguage(item.language);
+                        setAbbr(item.abbr);
+                      }}
+                      className="gap-2 items-center cursor-pointer text-base  dark:hover:bg-[#ffffff14]"
+                    >
+                      <Image
+                        src={item.flag}
+                        width="24"
+                        height="18"
+                        alt={`${item.language} flag`}
+                      />
+                      <p className="text-text-gray-900">{item.language}</p>
+                    </DropdownMenuCheckboxItem>
+                  ))}
+                </DropdownMenuContent>
+              </DropdownMenu>
+            </div>
 
-            <div className="gap-8 flex items-center">
-              <div className="flex items-center space-x-2">
+            <div className="gap-4 lg:gap-8 flex items-center">
+              <div className="hidden lg:flex  items-center space-x-2">
                 {isDark ? <FaSun /> : <FaMoon />}
                 <Label
                   htmlFor="airplane-mode"
@@ -182,6 +187,11 @@ const Navbar = ({ navbar }: Props) => {
                   {theme === "light" ? "Light" : "Dark"} Mode
                 </Label>
               </div>
+
+              <div className="block lg:hidden">
+                <MobileSearchDialog dropdownData={wikis} />
+              </div>
+
               <Switch
                 checked={isDark}
                 onClick={() => setTheme(isDark ? "light" : "dark")}
