@@ -114,3 +114,21 @@
   border-radius: 3px;
   background: #ffffff29;
 }
+
+@keyframes smoothExpand {
+  0% {
+    transform: scaleY(0);
+  }
+  100% {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes smoothCollapse {
+  0% {
+    transform: scaleY(1);
+  }
+  100% {
+    transform: scaleY(0);
+  }
+}
