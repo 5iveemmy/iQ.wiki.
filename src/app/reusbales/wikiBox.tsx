@@ -19,13 +19,13 @@ const WikiBox: React.FC<WikiBoxProps> = ({
       className="flex gap-4 px-5 py-3 cursor-pointer hover:bg-gray-100 dark:hover:bg-[#ffffff14] border-t"
       onMouseDown={() => setSearchTerm && setSearchTerm(title)}
     >
-      <div className="w-[58px] h-[46px] aspect-square rounded-md">
+      <div className="min-w-[68px] h-[46px] aspect-square rounded-md">
         <Image
           src={img}
-          width={58}
-          height={46}
+          width={450}
+          height={450}
           alt="wiki image"
-          className="w-full h-full object-fill rounded-md"
+          className="w-full h-full object-cover rounded-md"
         />
       </div>
       <div className="flex flex-col">
