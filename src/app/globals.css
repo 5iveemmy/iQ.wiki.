@@ -61,7 +61,7 @@
   }
 }
 
-.container {
+.custom-container {
   width: 100%;
   margin-right: auto;
   margin-left: auto;
@@ -70,7 +70,7 @@
 }
 
 @media (min-width: 1400px) {
-  .container {
+  .custom-container {
     max-width: 1400px;
   }
 }

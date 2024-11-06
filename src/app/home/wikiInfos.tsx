@@ -49,7 +49,7 @@ const WikiInfos = () => {
 
   return (
     <div className="relative">
-      <section className="px-4 lg:px-8 2xl:px-0 container mx-auto pb-16 md:pb-20 lg:pb-24 -mt-36 md:-mt-0">
+      <section className="px-4 lg:px-8 2xl:px-0 custom-container pb-16 md:pb-20 lg:pb-24 -mt-36 md:-mt-0">
         <div className="md:grid flex flex-row flex-wrap md:items-center md:grid-cols-2 xl:grid-cols-3 w-full gap-4 lg:gap-8">
           <WikiCard
             title="Tending Wikis"
@@ -142,7 +142,7 @@ const WikiInfos = () => {
 
       <div className="relative overflow-x-clip">
         <div className="absolute -z-10 -top-20 lg:-top-60 right-40 w-[400px] lg:h-[1326px] h-[0px] lg:w-[300px] rotate-6 lg:rotate-45 rounded-[100%] bg-home-gradient dark:opacity-50 blur-[100px]"></div>
-        <div className="w-full container px-4 lg:px-8 2xl:px-0 mx-auto mb-20">
+        <div className="w-full custom-container px-4 lg:px-8 2xl:px-0 mx-auto mb-20">
           <div>
             <h1 className="text-sm lg:text-2xl font-bold">
               Wiki rank by MarketCap
@@ -180,7 +180,7 @@ const WikiInfos = () => {
         </div>
       </div>
 
-      <div className="container mx-auto px-4 lg:px-8 2xl:px-0 relative pb-20 pt-0 lg:py-20">
+      <div className="custom-container px-4 lg:px-8 2xl:px-0 relative pb-20 pt-0 lg:py-20">
         <div className="flex flex-col gap-2 lg:gap-6 dark:bg-alpha-50 bg-slate-100 justify-center items-center pt-6 rounded-xl md:mb-72 lg:mb-96 px-0 lg:px-8 xl:px-0">
           <div className="flex flex-row gap-2 bg-brand-50 dark:bg-brand-100 rounded-2xl text-brand-500 dark:text-brand-800 p-1">
             <div className="bg-white py-0.5 px-3 rounded-full">

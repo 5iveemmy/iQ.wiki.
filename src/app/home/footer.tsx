@@ -201,7 +201,7 @@ const Footer = () => {
   return (
     <>
       <div className="bg-gray-100 dark:bg-alpha-50">
-        <div className="container mx-auto py-10 lg:py-20 relative px-4 lg:px-8 2xl:px-0">
+        <div className="custom-container py-10 lg:py-20 relative px-4 lg:px-8 2xl:px-0">
           <h1 className="font-bold text-2xl">Discover More</h1>
           <div className="flex flex-wrap mt-8 gap-4">
             {discoveries.map((discovery) => (

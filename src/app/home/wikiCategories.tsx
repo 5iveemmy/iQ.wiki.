@@ -100,7 +100,7 @@ const WikiCategories = () => {
     <>
       <div className="relative overflow-x-clip">
         <div className="absolute -z-10 -top-20 lg:-top-60 right-40 w-[400px] lg:h-[1326px] h-[0px] lg:w-[300px] rotate-6 lg:rotate-45 rounded-[0%] bg-home-gradient dark:opacity-50 blur-[100px]"></div>
-        <div className="flex flex-col gap-10 container mx-auto py-0 lg:py-20 px-4 lg:px-8 2xl:px-0">
+        <div className="flex flex-col gap-10 custom-container py-0 lg:py-20 px-4 lg:px-8 2xl:px-0">
           <div className="flex flex-col gap-3">
             <h1 className="text-base lg:text-2xl font-semibold">
               Wiki Categories
