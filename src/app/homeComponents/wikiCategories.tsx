@@ -145,7 +145,7 @@ const WikiCategories = () => {
       </div>
       <div className="relative overflow-x-clip">
         <div className="absolute -z-10 -top-20 lg:-top-[500px] left-40 w-[400px] lg:h-[1326px] h-[0px] lg:w-[300px] -rotate-6 lg:-rotate-45 rounded-full bg-home-gradient dark:opacity-50 blur-[100px]" />
-        <div className="container mx-auto pb-10 pt-5 md:py-20 xl:py-24 px-4 lg:px-8 2xl:px-0">
+        <div className="custom-container mx-auto pb-10 pt-5 md:py-20 xl:py-24 px-4 lg:px-8 2xl:px-0">
           <div className="flex flex-col md:flex-row gap-10 lg:gap-24 mt-10">
             <div className="flex items-center flex-1 max-w-lg">
               <div className="flex flex-col gap-6">
