@@ -121,8 +121,6 @@ const WikiInfos = () => {
                   loop: true,
                 }}
                 plugins={[plugin.current]}
-                onMouseEnter={plugin.current.stop}
-                onMouseLeave={plugin.current.reset}
                 className="w-full relative"
               >
                 <CarouselContent className="ml-0 mr-4 mt-2">

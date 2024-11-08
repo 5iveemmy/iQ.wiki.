@@ -92,9 +92,7 @@ const events = [
 ];
 
 const WikiCategories = () => {
-  const plugin = React.useRef(
-    Autoplay({ delay: 2000})
-  );
+  const plugin = React.useRef(Autoplay({ delay: 2000 }));
 
   return (
     <>
@@ -171,8 +169,6 @@ const WikiCategories = () => {
                   loop: true,
                 }}
                 plugins={[plugin.current]}
-                onMouseEnter={plugin.current.stop}
-                onMouseLeave={plugin.current.reset}
                 className="w-full relative"
               >
                 <CarouselContent className="-ml-0">
