@@ -44,9 +44,7 @@ const WikiInfos = () => {
 
   const isDark = theme === "dark";
 
-  const plugin = React.useRef(
-    Autoplay({ delay: 2000, stopOnInteraction: true })
-  );
+  const plugin = React.useRef(Autoplay({ delay: 2000 }));
 
   return (
     <div className="relative">
